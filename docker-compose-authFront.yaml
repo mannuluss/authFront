@@ -1,0 +1,18 @@
+version: "3.7"
+services: 
+  nginx-auth:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4300:80
+    networks:
+      - mysql_network
+    container_name: nginx-auth
+    restart: always
+volumes:
+  html: {}
+networks:
+  mysql_network:
+    name: mysql_net
+    driver: bridge
