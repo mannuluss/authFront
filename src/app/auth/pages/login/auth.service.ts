@@ -3,16 +3,16 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from './usuario';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   private _usuario?: Usuario | null;
   private _token?: string | null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   public get usuario(): Usuario {
     if (this._usuario != null) {
@@ -49,7 +49,7 @@ export class AuthService {
     params.set('grant_type', 'password');
     params.set('username', usuario.username!);
     params.set('password', usuario.password!);
-    // console.log(params.toString());
+
     return this.http.post<any>(urlEndpoint, params.toString(), { headers: httpHeaders });
   }
 
@@ -97,5 +97,6 @@ export class AuthService {
     sessionStorage.clear();
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('usuario');
+    this.router.navigate(['/']);
   }
 }

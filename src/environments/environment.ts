@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   name: "predev",
-  urlBackAuth: "http://localhost:8080/",
-  urlFrontUser: "https://facebook.com", // endpoint en donde va a estar el front de usuario
-  urlFrontAdmin: "https://google.com", // endpoint en donde va a estar el front de admin
+  urlBackAuth: "http://localhost:8081/",
+  urlFrontUser: "http://localhost:4200/", // endpoint en donde va a estar el front de usuario
+  urlFrontAdmin: "http://localhost:4201/", // endpoint en donde va a estar el front de admin
 };
 
 /*

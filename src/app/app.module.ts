@@ -15,7 +15,6 @@ import { MaterialModule } from './material/material.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NoopAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
