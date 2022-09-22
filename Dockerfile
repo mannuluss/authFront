@@ -15,6 +15,8 @@ RUN npm run build
 
 #Segunda Etapa
 FROM nginx:1.17.1-alpine
+RUN rm /etc/nginx/conf.d/default.conf
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 	#Si estas utilizando otra aplicacion cambia PokeApp por el nombre de tu app
 COPY --from=build-step /app/dist/auth /usr/share/nginx/html
 EXPOSE 80
