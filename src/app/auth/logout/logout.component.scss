@@ -1,0 +1,155 @@
+/*$sizeX: 35vw; //250px;
+$sizeY: 35vh; //350px;
+$border-door: 25px;
+$knob-size: 20px;*/
+$time-anim: 3s;
+$delay-anim: 0.5s;
+$time-zoom-in: calc($time-anim);
+
+/*.parent-door {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.door-border {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: darkorchid;
+  width: $sizeX;
+  height: $sizeY;
+  position: relative;
+  border: 1px solid #000;
+
+  //animation: zoom-in $time-anim $time-zoom-in forwards;
+}
+
+.door,
+.indoor {
+  width: 90%;//calc($sizeX - $border-door * 2);
+  height: 90%;//calc($sizeY - $border-door);
+  position: absolute;
+  top: $border-door;
+  left: $border-door;
+}
+
+.door {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: bisque;
+  animation: open-door $time-anim $delay-anim forwards;
+  transform-origin: 100% 0;
+}
+
+.indoor {
+  background-color: rgb(43, 43, 43);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    color: whitesmoke;
+  }
+}
+
+.knob {
+  width: $knob-size;
+  height: $knob-size;
+  border-radius: 50%;
+  background-color: #000;
+  position: absolute;
+  top: 50%;
+  left: calc($knob-size/2);
+}
+
+@keyframes open-door {
+  0% {
+    transform: rotateY(0deg);
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+  }
+  100% {
+    transform: rotateY(90deg);
+    clip-path: polygon(0% 10%, 100% 0, 100% 100%, 0% 90%);
+  }
+}
+
+@keyframes zoom-in {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+      width: 100vw;
+      height: 100vh;
+  }
+}*/
+
+.msj-logout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #252525;
+  text-align: center;
+  font-size: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  * {
+    transform: scale(0);
+    animation: mensaje 1s $time-zoom-in forwards;
+  }
+  button{
+    margin: 100px;
+    color: rgb(255 255 255 / 87%);
+    background-color: #252525;
+  }
+}
+
+::ng-deep svg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+}
+
+::ng-deep #eclipse {
+  fill: #fbcc24;
+  animation: solticio $time-anim $delay-anim forwards;
+}
+
+@keyframes solticio {
+  0% {
+    fill: #fbc80e;
+  }
+  33% {
+    translate: 0% 100%;
+    r: 10%;
+    fill: rgb(254, 153, 0);
+  }
+  34% {
+    fill: aliceblue;
+  }
+  66% {
+    fill: aliceblue;
+    translate: 0% 20%;
+    r: 10%;
+  }
+  100% {
+    fill: aliceblue;
+    transform-origin: 50% 5%;
+    r: 100%;
+  }
+}
+
+@keyframes mensaje {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

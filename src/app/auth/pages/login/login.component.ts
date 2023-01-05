@@ -47,7 +47,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.authService.isAuthenticated()) {
       console.log('ya esta logueado');
-      location.href = environment.urlFrontUser;
+      /*if (this.router['browserUrlTree'].queryParams.link) {
+        location.href = this.router['browserUrlTree'].queryParams.link;
+      } else {*/
+      this.redirect(this.authService.usuario);
+      //}
     }
   }
 
@@ -62,26 +66,28 @@ export class LoginComponent implements OnInit {
 
     this.siging = true;
     this.errorLogin = undefined;
-    this.authService.login(this.usuario).subscribe((response) => {
-      console.log(response);
+    this.authService.login(this.usuario).subscribe(
+      (response) => {
+        console.log(response);
 
-      this.authService.guardarUsuario(response.access_token);
-      this.authService.guardarToken(response.access_token);
-      let usuario = this.authService.usuario;
-      // TODO: definir ruta luego del login
-      // this.router.navigate(['/general']);
-      if (usuario?.roles?.includes('ROLE_ADMIN')) {
-        location.href = environment.urlFrontAdmin;
-      } else {
-        location.href = environment.urlFrontUser;
+        this.authService.guardarUsuario(response.access_token);
+        this.authService.guardarToken(response.access_token);
+        let usuario = this.authService.usuario;
+
+        this.redirect(usuario);
+      },
+      (err) => {
+        this.errorLogin = 'contraseña o usuario incorrectas.';
+        this.siging = false;
       }
-      //location.href = environment.urlFrontUser;
+    );
+  }
 
-      //console.log('inicio con exito');
-      //swal('Login', `Hola ${usuario.username}, has iniciado sesión con éxito!`, 'success');
-    },err=>{
-      this.errorLogin = "contraseña o usuario incorrectas.";
-      this.siging=false;
-    });
+  redirect(usuario: Usuario) {
+    if (usuario?.roles?.includes('ROLE_ADMIN')) {
+      location.href = environment.urlFrontAdmin;
+    } else {
+      location.href = environment.urlFrontUser;
+    }
   }
 }

@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   name: "predev",
-  urlBackAuth: "http://localhost:8081/",
-  urlFrontUser: "http://localhost:4200/", // endpoint en donde va a estar el front de usuario
-  urlFrontAdmin: "http://localhost:4201/", // endpoint en donde va a estar el front de admin
+  urlBackAuth: "http://services.feliperojas.me/",
+  urlFrontUser: "//localhost:4200/home", // endpoint en donde va a estar el front de usuario
+  urlFrontAdmin: "//localhost:4200/admin", // endpoint en donde va a estar el front de admin
 };
 
 /*

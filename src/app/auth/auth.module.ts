@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { SvgSolsticioComponent } from './logout/svg/solsticio.component';
 
 
 
@@ -13,7 +14,8 @@ import { LogoutComponent } from './logout/logout.component';
   declarations: [
     RegistroComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    SvgSolsticioComponent
   ],
   imports: [
     CommonModule,
