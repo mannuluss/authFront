@@ -30,5 +30,5 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Deploy to Server
-        run: scp -r -i ${{ secrets.SSH_PRIVATE_KEY }} dist/*.* ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/home/ubuntuAdmin/pages/auth
+        run: scp -r dist/* ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/home/ubuntuAdmin/pages/auth
 
