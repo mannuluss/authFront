@@ -24,11 +24,11 @@ jobs:
       - name: Build Angular App
         run: npm run build --prod
 
-      - name: Deploy to Server
-        uses: appleboy/scp-action@master
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.1
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "dist/*.*"
-          target: /home/ubuntuAdmin/pages/auth
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to Server
+        run: scp -r -i ${{ secrets.SSH_PRIVATE_KEY }} dist/* ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }}:/home/ubuntuAdmin/pages/auth
+
