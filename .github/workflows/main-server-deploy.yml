@@ -23,7 +23,7 @@ jobs:
 
       - name: Build Angular App
         run: |
-          npm run build --base-href=/auth/
+          npm run build --base-href=/auth/ \
           tar -czf dist-${{ github.repository }}.tgz dist/auth
 
       - name: Load to Server
