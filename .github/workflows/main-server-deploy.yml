@@ -23,8 +23,9 @@ jobs:
 
       - name: Build Angular App
         run: |
+          cd ./
           npm run build --base-href=/auth/
-          tar -cvf dist-${{ github.repository }}.tgz dist/auth
+          tar -czf dist-${{ github.repository }}.tgz ./dist/auth
 
       - name: Load to Server
         uses: appleboy/scp-action@v0.1.4
@@ -43,5 +44,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ~/pages
-            tar -xvf dist-${{ github.repository }}.tgz
+            tar -xzf dist-${{ github.repository }}.tgz
             rm dist-${{ github.repository }}.tgz
