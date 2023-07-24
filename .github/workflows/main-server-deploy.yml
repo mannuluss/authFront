@@ -25,6 +25,7 @@ jobs:
         run: |
           cd ./
           npm run build --base-href=/auth/
+          ls dist/auth
           tar -czf dist-${{ github.repository }}.tgz ./dist/auth
 
       - name: Load to Server
