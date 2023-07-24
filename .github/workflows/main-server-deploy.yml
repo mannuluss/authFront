@@ -26,7 +26,7 @@ jobs:
           echo "Compilando archivos..."
           npm run build --base-href=/auth/
           echo "Comprimiendo archivos..."
-          tar -czf dist-$GITHUB_SHA.tgz ./dist/auth
+          tar -czf dist-${{ github.sha }}.tgz ./dist/auth
 
       - name: Load to Server
         uses: appleboy/scp-action@v0.1.4
@@ -34,7 +34,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: dist-$GITHUB_SHA.tgz
+          source: dist-${{ github.sha }}.tgz
           target: ~/pages
 
       - name: Deploy on Server
@@ -45,5 +45,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd ~/pages
-            tar -xzf dist-${{ github.repository }}.tgz
-            rm dist-${{ github.repository }}.tgz
+            tar -xzf dist-${{ github.sha }}.tgz
+            rm dist-${{ github.sha }}.tgz
