@@ -23,10 +23,10 @@ jobs:
 
       - name: Build Angular App
         run: |
-          cd ./
+          echo "Compilando archivos..."
           npm run build --base-href=/auth/
-          ls dist/auth
-          tar -czf dist-${{ github.repository }}.tgz ./dist/auth
+          echo "Comprimiendo archivos..."
+          tar -czf dist-$GITHUB_SHA.tgz ./dist/auth
 
       - name: Load to Server
         uses: appleboy/scp-action@v0.1.4
@@ -34,7 +34,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: dist-${{ github.repository }}.tgz
+          source: dist-$GITHUB_SHA.tgz
           target: ~/pages
 
       - name: Deploy on Server
