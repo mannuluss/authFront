@@ -8,16 +8,13 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-        permissions: 
-            actions: write
-            pages: write
         
         steps:
           - name: Checkout Repository
             uses: actions/checkout@v2
             
           - name: Compile Angular app
-            uses: projects-mannulus/templates/.github/actions/angular-compile-action.yml@main
+            uses: projects-mannulus/templates/.github/actions/angular-compile-action.yml
             with:
                 nodeVersion: '14.x'
                 baseHref: auth-front
