@@ -30,8 +30,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "baseHref": "/auth/"
+            "scripts": []
           },
           "configurations": {
             "production": {
