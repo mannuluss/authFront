@@ -10,6 +10,9 @@ jobs:
         runs-on: ubuntu-latest
         
         steps:
+          - name: Checkout Repository
+            uses: actions/checkout@v2
+            
           - name: Compile Angular app
             uses: projects-mannulus/templates/.github/actions/angular-compile-action.yml@main
             with:
