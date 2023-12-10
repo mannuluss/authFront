@@ -18,7 +18,7 @@ jobs:
             uses: projects-mannulus/templates/actions/angular-build@main
             with:
                 nodeVersion: '14.x'
-                baseHref: auth-front
+                baseHref: authFront
         
           - name: Deploy to GitHub Pages
             uses: JamesIves/github-pages-deploy-action@v4
